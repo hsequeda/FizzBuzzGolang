@@ -6,9 +6,12 @@ import (
 )
 
 const (
-	FIZZ      string = "Fizz"
-	BUZZ             = "Buzz"
-	FIZZ_BUZZ        = "FizzBuzz"
+	// FizzCase represent the return of FizzBuzz function when the input is multiple of three.
+	FizzCase string = "Fizz"
+	// BuzzCase represent the return of FizzBuzz function when the input is multiple of five.
+	BuzzCase = "Buzz"
+	// FizzBuzzCase represent the return of FizzBuzz function when the input is multiple of three and five.
+	FizzBuzzCase = "FizzBuzz"
 )
 
 // FizzBuzz return the input number as a string.
@@ -22,11 +25,11 @@ func FizzBuzz(input uint8) (string, error) {
 	}
 	switch {
 	case isMultipleOfThree(input) && isMultipleOfFive(input):
-		return FIZZ_BUZZ, nil
+		return FizzBuzzCase, nil
 	case isMultipleOfThree(input):
-		return FIZZ, nil
+		return FizzCase, nil
 	case isMultipleOfFive(input):
-		return BUZZ, nil
+		return BuzzCase, nil
 	default:
 		return fmt.Sprint(input), nil
 	}

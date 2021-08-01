@@ -18,7 +18,7 @@ func TestFizzBuzz(t *testing.T) {
 		for _, threeMultiple := range threeMultiples {
 			out, err := app.FizzBuzz(threeMultiple)
 			require.NoError(t, err)
-			assert.Equal(t, app.FIZZ, out)
+			assert.Equal(t, app.FizzCase, out)
 		}
 	})
 
@@ -29,7 +29,7 @@ func TestFizzBuzz(t *testing.T) {
 		for _, fiveMultiple := range fiveMultiples {
 			out, err := app.FizzBuzz(fiveMultiple)
 			require.NoError(t, err)
-			assert.Equal(t, app.BUZZ, out)
+			assert.Equal(t, app.BuzzCase, out)
 		}
 	})
 
@@ -40,7 +40,7 @@ func TestFizzBuzz(t *testing.T) {
 		for _, fiveMultiple := range fiveMultiples {
 			out, err := app.FizzBuzz(fiveMultiple)
 			require.NoError(t, err)
-			assert.Equal(t, app.FIZZ_BUZZ, out)
+			assert.Equal(t, app.FizzBuzzCase, out)
 		}
 	})
 
