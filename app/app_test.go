@@ -28,4 +28,14 @@ func TestFizzBuzz(t *testing.T) {
 			assert.Equal(t, app.BUZZ, out)
 		}
 	})
+
+	t.Run("All three && five multiples (only) (range [1-100])", func(t *testing.T) {
+		fiveMultiples := []uint8{
+			15, 30, 45, 60, 75, 90,
+		}
+		for _, fiveMultiple := range fiveMultiples {
+			out := app.FizzBuzz(fiveMultiple)
+			assert.Equal(t, app.FIZZ_BUZZ, out)
+		}
+	})
 }

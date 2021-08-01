@@ -11,8 +11,11 @@ const (
 // FizzBuzz return the input number as a string.
 // If input is multiple of 3 Fizz.
 // If input is multiple of 5 return Buzz.
+// If input is multiple of 3 and 5 return FizzBuzz.
 func FizzBuzz(input uint8) string {
 	switch {
+	case isMultipleOfThree(input) && isMultipleOfFive(input):
+		return FIZZ_BUZZ
 	case isMultipleOfThree(input):
 		return FIZZ
 	case isMultipleOfFive(input):
