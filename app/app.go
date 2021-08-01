@@ -1,6 +1,9 @@
 package app
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 const (
 	FIZZ      string = "Fizz"
@@ -12,16 +15,20 @@ const (
 // If input is multiple of 3 Fizz.
 // If input is multiple of 5 return Buzz.
 // If input is multiple of 3 and 5 return FizzBuzz.
-func FizzBuzz(input uint8) string {
+// Only works with inputs in range [1-100].
+func FizzBuzz(input uint8) (string, error) {
+	if input == 0 || input > 100 {
+		return "", errors.New("FizzBuzz range is [1-100]")
+	}
 	switch {
 	case isMultipleOfThree(input) && isMultipleOfFive(input):
-		return FIZZ_BUZZ
+		return FIZZ_BUZZ, nil
 	case isMultipleOfThree(input):
-		return FIZZ
+		return FIZZ, nil
 	case isMultipleOfFive(input):
-		return BUZZ
+		return BUZZ, nil
 	default:
-		return fmt.Sprint(input)
+		return fmt.Sprint(input), nil
 	}
 }
 

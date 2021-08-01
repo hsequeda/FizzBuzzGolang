@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestFizzBuzz(t *testing.T) {
@@ -15,7 +16,8 @@ func TestFizzBuzz(t *testing.T) {
 			63, 66, 69, 72, 78, 81, 84, 87, 93, 96, 99,
 		}
 		for _, threeMultiple := range threeMultiples {
-			out := app.FizzBuzz(threeMultiple)
+			out, err := app.FizzBuzz(threeMultiple)
+			require.NoError(t, err)
 			assert.Equal(t, app.FIZZ, out)
 		}
 	})
@@ -25,7 +27,8 @@ func TestFizzBuzz(t *testing.T) {
 			5, 10, 20, 25, 35, 40, 50, 55, 65, 70, 80, 85, 95, 100,
 		}
 		for _, fiveMultiple := range fiveMultiples {
-			out := app.FizzBuzz(fiveMultiple)
+			out, err := app.FizzBuzz(fiveMultiple)
+			require.NoError(t, err)
 			assert.Equal(t, app.BUZZ, out)
 		}
 	})
@@ -35,7 +38,8 @@ func TestFizzBuzz(t *testing.T) {
 			15, 30, 45, 60, 75, 90,
 		}
 		for _, fiveMultiple := range fiveMultiples {
-			out := app.FizzBuzz(fiveMultiple)
+			out, err := app.FizzBuzz(fiveMultiple)
+			require.NoError(t, err)
 			assert.Equal(t, app.FIZZ_BUZZ, out)
 		}
 	})
@@ -47,8 +51,18 @@ func TestFizzBuzz(t *testing.T) {
 			79, 82, 83, 86, 88, 89, 91, 92, 94, 97, 98,
 		}
 		for _, number := range noMultiplesOfFiveOrThree {
-			out := app.FizzBuzz(number)
+			out, err := app.FizzBuzz(number)
+			require.NoError(t, err)
 			assert.Equal(t, fmt.Sprint(number), out)
 		}
+	})
+
+	t.Run("Error: Input == 0 || Input > 100", func(t *testing.T) {
+		_, err := app.FizzBuzz(0)
+		assert.NotNil(t, err)
+		_, err = app.FizzBuzz(101)
+		assert.NotNil(t, err)
+		_, err = app.FizzBuzz(102)
+		assert.NotNil(t, err)
 	})
 }
